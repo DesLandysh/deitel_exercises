@@ -3,8 +3,10 @@
 #include <stdio.h>
 #include <math.h>
 
+/* used for cloisures */
 static double total_hours = 0;
 static double total_charge = 0;
+
 
 double calculateCharges(double hours){
   double temp;
@@ -31,22 +33,23 @@ int main(void)
     
   puts("Введите количество водителей: ");
   scanf("%d", &driver_counter);
-  printf("DEBUG: driver_counter %d\n", driver_counter);
+
+  /* TIME GETTING & CALCULATION */
   double drivers_time[driver_counter];
   for (int driver = 1; driver <= driver_counter; ++driver){
     int h;  int _m;
     double mins;
+    
     printf("Введите время начала парковки для %d водителя (HH:MM): ", driver);
     scanf("%d:%d", &h, &_m);
-    puts("\n");
+    
     mins = _m / 60.0;  /* 60system to DEC */
-    printf("DEBUG: h, m %d %d %.2f\n", h, _m, mins);
     drivers_time[driver] = (double)h + mins;
-    printf("DEBUG: drivers_time[driver] %f\n", drivers_time[driver]);
     drivers_time[driver] = calcHours(&drivers_time[driver]);
-    printf("DEBUG: drivers_time[driver] %f\n", drivers_time[driver]);
+
   }
   
+  /* PRINT OUTPUT */
   puts("Car\t Hours\t Charge");
   for (int driver = 1; driver <= driver_counter; ++driver){
     printf("%d\t %5.1f\t %6.2f\n", driver, drivers_time[driver], calculateCharges(drivers_time[driver]));
