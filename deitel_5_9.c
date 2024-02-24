@@ -39,7 +39,8 @@ int main(void)
   for (int driver = 1; driver <= driver_counter; ++driver){
     int h;  int _m;
     double mins;
-    
+
+    /* Take actual time as a clock, not just parking hours */
     printf("Введите время начала парковки для %d водителя (HH:MM): ", driver);
     scanf("%d:%d", &h, &_m);
     
