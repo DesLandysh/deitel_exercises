@@ -49,6 +49,13 @@ double hypotenuse(double a, double b)
   return pow((a * a + b * b), .5); /* == sqrt(a * a + b * b) */
 }
 
+/* 5.16 */
+int integerPower(int base, unsigned int exponent)
+{
+  int res = base;
+  for (int i = 1; i < exponent; ++i) res *= base;
+  return res;
+}
 
 int main(void)
 {
@@ -75,7 +82,10 @@ int main(void)
   printf("\ntris\tside1\tside2\t  res\n");
   printf("   1\t%.2lf\t%.2lf\t%.2lf\n", 3.0, 4.0, hypotenuse(3.0, 4.0));
   printf("   2\t%.2lf\t%.2lf\t%.2lf\n", 5.0, 12.0, hypotenuse(5.0, 12.0));
-  printf("   3\t%.2lf\t%.2lf\t%.2lf\n", 8.0, 12.0, hypotenuse(8.0, 12.0));
+  printf("   3\t%.2lf\t%.2lf\t%.2lf\n", 8.0, 15.0, hypotenuse(8.0, 15.0));
 
+  /* 5.16 */
+  printf("\nintegerPower(3, 4) is %d\n", integerPower(3, 4));
+  
   return 0;
-}//237
+}
