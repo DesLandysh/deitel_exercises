@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
+#include <stdbool.h>
 
 /* 5.11 */
 int round_to_integer(double x)
@@ -57,6 +58,14 @@ int integerPower(int base, unsigned int exponent)
   return res;
 }
 
+/* 5.17 */
+bool multiple(int a, int b)
+{
+  if (a % b == 0) return true;
+  else if (b % a == 0) return true;
+  else return false;
+}
+
 int main(void)
 {
   /* 5.14 */
@@ -86,6 +95,21 @@ int main(void)
 
   /* 5.16 */
   printf("\nintegerPower(3, 4) is %d\n", integerPower(3, 4));
+  
+  /* 5.17 */
+  int stopper = -1;
+  
+  while (stopper != 0)
+  {
+    int a, b;
+    puts("Enter two ingegers thru space:\n");
+    scanf("%d %d", &a, &b);
+    
+    printf("Does %d and %d are mutiple? ... %s\n", a, b, (multiple(a, b) ? "True" : "False"));
+    
+    puts("\nWill you continue? (0 to finish)");
+    scanf("%d", &stopper);
+  }
   
   return 0;
 }
